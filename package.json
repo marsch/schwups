@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "jquery": "^3.6.0",
+        "jqueryfiletree": "^2.1.4",
         "monaco-editor": "^0.23.0"
     }
 }

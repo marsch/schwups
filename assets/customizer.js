@@ -1,6 +1,13 @@
 
+
 require('monaco-editor/min/vs/editor/editor.main.css')
+require('jqueryfiletree/dist/jQueryFileTree.min.css')
+
+import './styles/customizer.css';
+
 const jQuery = require('jquery')
+window.jQuery = jQuery
+const ftree = require('jqueryfiletree')
 
 import * as monaco from 'monaco-editor';
 
@@ -72,15 +79,32 @@ editor.addAction({
     }
 })
 
+
+const extToType = {
+    'js': 'javascript',
+    'twig': 'twig',
+    'html': 'html',
+    'yml': 'yaml',
+    'yaml': 'yaml',
+    'php': 'php',
+    'json': 'json',
+    'scss': 'scss'
+}
+
 const loadFile = (filename) => {
+    filename = filename.substr(1)
+    const fileExt = filename.split('.').pop()
+    const ftype = extToType[fileExt] ? extToType[fileExt] : 'text'
+
     jQuery.ajax({
         method: 'GET',
         url: `/customize/${filename}`,
         dataType: 'text',
         withCredentials: true,
         success: (data) => {
+
             editor.getModel().dispose()
-            const model = monaco.editor.createModel(jQuery.trim(data), 'twig', filename)
+            const model = monaco.editor.createModel(jQuery.trim(data), ftype, filename)
             editor.setModel(model)
         }
     })
@@ -91,10 +115,23 @@ jQuery(($) => {
         const filename = $(e.target).attr('data-filename')
         loadFile(filename)
     })
+
+    $('#files-view').fileTree({
+        script: '/customize-tree',
+        expandSpeed: 1000,
+        collapseSpeed: 1000,
+        multiFolder: false
+    })
+
+    $('#files-view' ).on('filetreeclicked', (e, data) => {
+        const filepath = data.rel
+        console.log('click', filepath)
+        loadFile(filepath)
+    })
 })
 
 setTimeout(() => {
-    loadFile('helloworld.html.twig')
+    loadFile('/helloworld.html.twig')
 }, 0)
 
 

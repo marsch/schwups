@@ -3142,6 +3142,11 @@ jquery@^3.6.0:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
 
+jqueryfiletree@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/jqueryfiletree/-/jqueryfiletree-2.1.4.tgz#6b8d422f74129ce9891ceadf357e4a3867238f91"
+  integrity sha1-a41CL3QSnOmJHOrfNX5KOGcjj5E=
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

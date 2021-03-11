@@ -19,7 +19,7 @@ class CustomizerController extends AbstractController
     }
 
     /**
-     * @Route("/customize/{customPath}", methods={"GET"})
+     * @Route("/customize/{customPath}", methods={"GET"}, requirements={"customPath"=".+"})
      */
     public function showAction(string $customPath)
     {
@@ -37,7 +37,7 @@ class CustomizerController extends AbstractController
 
 
     /**
-     * @Route("/customize/{customPath}", methods={"PUT"})
+     * @Route("/customize/{customPath}", methods={"PUT"}, requirements={"customPath"=".+"})
      */
     public function updateAction(string $customPath, Request $request) {
         $customAbsolutePath = $this->resolveCustomFile($customPath);
@@ -49,6 +49,53 @@ class CustomizerController extends AbstractController
         } else {
             throw $this->createNotFoundException('file not found');
         }
+    }
+
+    /**
+     * @Route("/customize-tree", methods={"POST"})
+     */
+    public function showTree(string $customPath = '', Request $request) {
+        $projectRoot = $this->getParameter('kernel.project_dir');
+        $baseDir = $projectRoot . "/custom/";
+        $customDir = $baseDir;
+        $dir = $request->request->get('dir');
+
+
+        if ($dir) {
+            $customDir = $customDir . $dir;
+        }
+
+        if (file_exists($customDir)) {
+            $files = scandir($customDir);
+            $returnDir = substr($customDir, strlen($baseDir));
+            natcasesort($files);
+
+            $html = "";
+            if (count($files) > 2) { // The 2 accounts for . and ..
+                $html = "<ul class='jqueryFileTree'>";
+                foreach ($files as $file)
+                {
+                    $htmlRel = htmlentities($returnDir . $file);
+                    $htmlName = htmlentities($file);
+                    $ext = preg_replace('/^.*\./', '', $file);
+                    if (file_exists($customDir . $file) && $file != '.' && $file != '..') {
+                        if (is_dir($customDir . $file)) {
+                            $html .= "<li class='directory collapsed'><a rel='" . $htmlRel . "/'>" . $htmlName . "</a></li>";
+                        }
+                        else {
+                            $html .= "<li class='file ext_{$ext}'><a rel='" . $htmlRel . "'>" . $htmlName . "</a></li>";
+                        }
+                    }
+                }
+                $html .= "</ul>";
+            }
+
+            return new Response($html, 200);
+        }
+
+
+
+
     }
 
     protected function resolveCustomFile($filename) {

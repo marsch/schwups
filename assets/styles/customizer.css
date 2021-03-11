@@ -1,0 +1,14 @@
+#customizr {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#files-view {
+    padding: 10px;
+    background-color: #000;
+    min-width: 200px;
+}
+
+UL.jqueryFileTree a {
+    color: #fff !important;
+}
