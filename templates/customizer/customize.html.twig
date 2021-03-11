@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Customizr!{% endblock %}</title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('customizer') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('editor.worker') }}
+            {{ encore_entry_script_tags('css.worker') }}
+            {{ encore_entry_script_tags('html.worker') }}
+            {{ encore_entry_script_tags('json.worker') }}
+        {% endblock %}
+    </head>
+    <body>
+
+
+        {% block body %}
+            <a href="#" data-filename='helloworld.html.twig'>helloworld.html.twig</a>
+            <a href="#" data-filename='_footer.html.twig'>_footer.html.twig</a>
+            <div id="monaco-editor" style="width:800px;height:600px;border:1px solid grey"></div>
+
+        {% endblock %}
+    </body>
+        {% block javascripts_footer %}
+            {{ encore_entry_script_tags('customizer') }}
+        {% endblock %}
+</html>
