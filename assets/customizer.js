@@ -39,7 +39,7 @@ const editor = monaco.editor.create(document.getElementById('monaco-editor'), {
 	readOnly: false,
 	theme: "vs-dark",
     minimap: {
-        enabled: false
+        enabled: true
     }
 });
 
