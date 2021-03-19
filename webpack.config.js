@@ -1,5 +1,10 @@
-const Encore = require('@symfony/webpack-encore');
 
+const Encore = require('@symfony/webpack-encore');
+const fs = require('fs')
+const path = require('path')
+
+const oxelmoxelTheme = require('./themes/oxelmoxel/webpack.config');
+const vanandernTheme = require('./themes/vanandern/webpack.config');
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -79,6 +84,5 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
-;
 
-module.exports = Encore.getWebpackConfig();
+module.exports = [Encore.getWebpackConfig(), vanandernTheme, oxelmoxelTheme]

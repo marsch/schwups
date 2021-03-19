@@ -1,7 +1,7 @@
 {
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
-        "@symfony/webpack-encore": "^1.0.0",
+        "@symfony/webpack-encore": "^1.1.2",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
         "stimulus": "^2.0.0",
@@ -16,8 +16,13 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.35",
+        "@fortawesome/free-brands-svg-icons": "^5.15.3",
+        "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "jquery": "^3.6.0",
         "jqueryfiletree": "^2.1.4",
-        "monaco-editor": "^0.23.0"
+        "monaco-editor": "^0.23.0",
+        "node-sass": "^5.0.0",
+        "sass-loader": "^11.0.0"
     }
 }

@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\TemplateRenderer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DemoController extends AbstractController
@@ -12,12 +12,12 @@ class DemoController extends AbstractController
     /**
      * @Route("/demo")
      */
-    public function __invoke(TemplateRenderer $templateRenderer)
+    public function __invoke(TranslatorInterface $translator)
     {
         $view = 'helloworld.html.twig';
         $parameters = [];
 
-        $content = $templateRenderer->render(
+        $content = $this->render(
             $view,
             $parameters
         );

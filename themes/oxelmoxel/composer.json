@@ -1,0 +1,9 @@
+{
+    "name": "marsch/oxelmoxel-theme",
+    "extra": {
+        "sylius-theme": {
+            "title": "OxelMoxel Child Theme",
+            "parents": ["marsch/vanandern-theme"]
+        }
+    }
+}

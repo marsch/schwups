@@ -1,0 +1,20 @@
+{
+  "entrypoints": {
+    "oxelmoxeltheme": {
+      "css": [
+        "/vanandern-theme/oxelmoxeltheme.css"
+      ],
+      "js": [
+        "/vanandern-theme/oxelmoxeltheme.js"
+      ]
+    },
+    "vananderntheme": {
+      "css": [
+        "/vanandern-theme/vananderntheme.css"
+      ],
+      "js": [
+        "/vanandern-theme/vananderntheme.js"
+      ]
+    }
+  }
+}

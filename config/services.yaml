@@ -27,10 +27,18 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
-    App\TemplateRenderer:
+    # App\TemplateRenderer:
+    #     public: true
+    #     arguments:
+    #         $loader: '@twig.loader.native_filesystem'
+
+
+    kernel.listener:
         public: true
-        arguments:
-            $loader: '@twig.loader.native_filesystem'
+        class: App\ThemeRequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

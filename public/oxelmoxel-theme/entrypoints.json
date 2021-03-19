@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "oxelmoxeltheme": {
+      "css": [
+        "/oxelmoxel-theme/oxelmoxeltheme.css"
+      ],
+      "js": [
+        "/oxelmoxel-theme/oxelmoxeltheme.js"
+      ]
+    }
+  }
+}
